@@ -1,4 +1,4 @@
-# 📰 Script Automation: Generate 34 Portal Berita
+﻿# 📰 Script Automation: Generate 34 Portal Berita
 
 Saya telah membuat sistem otomatis untuk generate **34 folder website portal berita** dengan tema yang berbeda-beda, tapi konten yang sama.
 
@@ -9,19 +9,19 @@ Saya telah membuat sistem otomatis untuk generate **34 folder website portal ber
 ### 1. **`tools/sites-config.json`**
 Template konfigurasi untuk 34 portal berita. Berisi:
 - **folderName**: Nama folder untuk setiap site (site-01, site-02, dst)
-- **siteName**: Nama portal berita (akan replace "BizNews")
-- **email**: Email portal (akan replace "IndonesiaDaily33@gmail.com")
-- **socialHandle**: Handle social media (akan replace "indonesiadaily")
+- **siteName**: Nama portal berita (akan replace "Portal Negeri")
+- **email**: Email portal (akan replace "portalnegeri@gmail.com")
+- **socialHandle**: Handle social media (akan replace "portalnegeri")
 - **colors**: Tema warna
-  - **primary**: Warna utama kuning (contoh: #FFCC00 → custom)
-  - **dark**: Warna gelap hitam (contoh: #1E2024 → custom)
+  - **primary**: Warna utama kuning (contoh: #15803D → custom)
+  - **dark**: Warna gelap hitam (contoh: #052E16 → custom)
   - **secondary**: Warna sekunder
 
 ### 2. **`tools/generate-sites.js`**
 Script Node.js yang akan:
 1. Membaca `sites-config.json`
 2. Untuk setiap dari 34 site:
-   - Copy folder **BizNews** → folder baru
+   - Copy folder **Portal Negeri** → folder baru
    - Replace otomatis di **semua file** (.html, .css, .js, .json):
      - Nama portal berita
      - Email
@@ -77,6 +77,27 @@ Buka file `tools/sites-config.json` dan edit untuk setiap site:
 
 ### **Langkah 3: Jalankan Script**
 
+#### **Langkah 3A: Rebrand Portal Negeri via PowerShell**
+
+Pastikan file dibaca dan ditulis ulang dengan **encoding UTF-8**, lalu jalankan:
+
+```powershell
+Set-Location "c:\KULIAH\MAGANG\Magang di Perhutani\Portal Negeri"
+Copy-Item .\articles.json .\articles.json.bak -Force
+
+Get-ChildItem -Recurse -Include *.html | ForEach-Object {
+    $content = Get-Content -Path $_.FullName -Raw -Encoding UTF8
+    $content = $content.Replace([string][char]0x201C, '"').Replace([string][char]0x201D, '"')
+    $content = $content.Replace([string][char]0x2018, "'").Replace([string][char]0x2019, "'")
+    $content = $content.Replace([string][char]0x2013, '-').Replace([string][char]0x2014, '-')
+    $content = $content.Replace([string][char]0x00A0, ' ').Replace([string][char]0xFFFD, ' ')
+    Set-Content -Path $_.FullName -Value $content -Encoding UTF8
+}
+
+PowerShell -ExecutionPolicy Bypass -File .\rebrand-to-portal-negeri.ps1
+PowerShell -ExecutionPolicy Bypass -File .\final-verification.ps1
+```
+
 Buka **Terminal** di folder project dan jalankan:
 
 ```bash
@@ -113,13 +134,13 @@ Script akan mengganti di **semua file** (.html, .css, .js):
 
 | Yang Direplac | Diganti Dengan |
 |---|---|
-| `BizNews` | `siteName` dari config |
-| `IndonesiaDaily` | `siteName` (tanpa spaces) |
-| `indonesiadaily` | `socialHandle` |
-| `IndonesiaDaily33@gmail.com` | `email` |
-| `#FFCC00` (primary) | Warna primary dari config |
-| `#1E2024` (dark) | Warna dark dari config |
-| `#31404B` (secondary) | Warna secondary dari config |
+| `Portal Negeri` | `siteName` dari config |
+| `portalnegeri` | `siteName` (tanpa spaces) |
+| `portalnegeri` | `socialHandle` |
+| `portalnegeri@gmail.com` | `email` |
+| `#15803D` (primary) | Warna primary dari config |
+| `#052E16` (dark) | Warna dark dari config |
+| `#1F5F7F` (secondary) | Warna secondary dari config |
 
 ---
 
@@ -185,8 +206,9 @@ Jika belum punya ide warna, berikut saran:
 ✅ **Consistent**: Semua file ter-replace dengan sempurna  
 ✅ **Flexible**: Gampang di-edit dan di-update  
 ✅ **Scalable**: Bisa di-expand ke lebih dari 34 jika perlu  
-✅ **Safe**: Original folder BizNews tidak akan di-delete  
+✅ **Safe**: Original folder Portal Negeri tidak akan di-delete  
 
 ---
 
 Sekarang tinggal Anda cari nama-nama 34 portal berita dan warna-warnanya, terus edit config file dan jalankan scriptnya! 🚀
+

@@ -59,7 +59,8 @@ document.addEventListener('DOMContentLoaded', async function(){
     try{
         const resp = await fetch('articles.json');
         if (!resp.ok) throw new Error('no index');
-        const data = await resp.json();
+        const raw = await resp.text();
+        const data = JSON.parse(raw.replace(/^\uFEFF/, ''));
         const counts = {};
         data.forEach(a => {
             let raw = (a.category || '').toString().trim();

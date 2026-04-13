@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Indonesia Daily - Berita Terkini Indonesia</title>
+    <title>Portal Negeri - Berita Terkini Indonesia</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="berita, news, indonesia, perhutani, lingkungan" name="keywords">
-    <meta content="Indonesia Daily - Portal berita terkini Indonesia dengan liputan lengkap tentang lingkungan, pendidikan, dan pembangunan berkelanjutan" name="description">
+    <meta content="Portal Negeri - Portal berita terkini Indonesia dengan liputan lengkap tentang lingkungan, pendidikan, dan pembangunan berkelanjutan" name="description">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">    
@@ -23,6 +23,135 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- Latest News Custom Styles -->
+    <style>
+        .latest-news-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .latest-news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .latest-news-card > a > img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .latest-news-card .article-title {
+            line-height: 1.4;
+            font-size: 1rem;
+            min-height: auto;
+            max-height: none;
+            overflow: visible;
+            text-overflow: initial;
+            display: block;
+            -webkit-line-clamp: unset;
+            -webkit-box-orient: unset;
+            word-wrap: break-word;
+            white-space: normal;
+        }
+
+        .latest-news-card .article-excerpt {
+            line-height: 1.4;
+            min-height: auto;
+            max-height: none;
+            overflow: visible;
+            text-overflow: initial;
+            display: block;
+            -webkit-line-clamp: unset;
+            -webkit-box-orient: unset;
+            word-wrap: break-word;
+            white-space: normal;
+        }
+
+        .latest-news-card .article-meta {
+            height: auto;
+            padding-top: 12px;
+            margin-top: auto;
+            border-top: 1px solid #eee;
+        }
+
+        .latest-news-card .article-meta img {
+            width: 35px;
+            height: 35px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .latest-news-card .article-meta small {
+            line-height: 1;
+        }
+
+        .breaking-news-carousel-wrapper {
+            position: relative;
+            padding: 0 50px;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .breaking-news-carousel {
+            width: 100%;
+        }
+
+        .breaking-news-carousel .owl-item {
+            display: flex;
+            align-items: center;
+            height: 70px;
+        }
+
+        .breaking-news-carousel .breaking-news-item {
+            width: 100%;
+            padding: 0 20px;
+            color: white;
+            text-align: left;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .breaking-news-carousel .breaking-news-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            line-height: 1.4;
+            transition: opacity 0.3s ease;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            padding-left: 10px;
+        }
+
+        @media (max-width: 1200px) {
+            .latest-news-card .article-title { font-size: 14px; }
+            .latest-news-card .article-excerpt { font-size: 12px; }
+            .section-title h4 { font-size: 18px; }
+        }
+
+        @media (max-width: 992px) {
+            .latest-news-card .article-title { font-size: 13px; }
+            .section-title h4 { font-size: 16px; }
+            .section-title { padding: 12px; margin-bottom: 12px; }
+        }
+
+        @media (max-width: 768px) {
+            .latest-news-card { margin-bottom: 20px; }
+            .latest-news-card .article-title { font-size: 12px; }
+            .section-title h4 { font-size: 14px; }
+            .section-title { padding: 10px; margin-bottom: 10px; }
+        }
+    </style>
 </head>
 
 <body>
@@ -54,27 +183,25 @@
                 <nav class="navbar navbar-expand-sm bg-dark p-0">
                     <ul class="navbar-nav ml-auto mr-n2">
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="https://twitter.com/indonesiadaily" target="_blank"><small class="fab fa-twitter"></small></a>
+                            <a class="nav-link text-body" href="https://twitter.com/portalnegeri" target="_blank"><small class="fab fa-twitter"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="https://facebook.com/indonesiadaily" target="_blank"><small class="fab fa-facebook-f"></small></a>
+                            <a class="nav-link text-body" href="https://facebook.com/portalnegeri" target="_blank"><small class="fab fa-facebook-f"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="https://linkedin.com/company/indonesiadaily" target="_blank"><small class="fab fa-linkedin-in"></small></a>
+                            <a class="nav-link text-body" href="https://linkedin.com/company/portalnegeri" target="_blank"><small class="fab fa-linkedin-in"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="https://instagram.com/indonesiadaily" target="_blank"><small class="fab fa-instagram"></small></a>
+                            <a class="nav-link text-body" href="https://instagram.com/portalnegeri" target="_blank"><small class="fab fa-instagram"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="https://mail.google.com/mail/u/0/" target="_blank"><small class="fa fa-envelope"></small></a>
+                            <a class="nav-link text-body" href="https://mail.google.com/mail/?view=cm&fs=1&to=portalnegeri@gmail.com" target="_blank"><small class="fa fa-envelope"></small></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body" href="https://youtube.com/@indonesiadaily" target="_blank"><small class="fab fa-youtube"></small></a>
+                            <a class="nav-link text-body" href="https://youtube.com/@portalnegeri" target="_blank"><small class="fab fa-youtube"></small></a>
                         </li>
                     </ul>
                 </nav>
-            </div>
-        </div>
             </div>
         </div>
     </div>
@@ -85,9 +212,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
 
         <!-- LOGO KIRI (MEPET) -->
-        <a href="index.html" class="navbar-brand mr-5">
-            <img src="img/logo.png" alt="IndonesiaDaily" style="height: 45px;">
-        </a>
+        <a href="index.html" class="navbar-brand mr-5"><span class="brand-portal" style="font-weight: 700; color: #15803D; font-size: 24px; letter-spacing: -0.5px;">PORTAL</span><span class="brand-negeri" style="color: #1F5F7F; font-weight: 500; font-size: 18px; margin-left: 2px;">NEGERI</span></a>
 
         <!-- TOGGLER -->
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -120,7 +245,6 @@
     </nav>
 </div>
 <!-- Navbar End -->
-
 
      <!-- Main News Slider Start -->
     <div class="container-fluid">
@@ -251,7 +375,6 @@
     </div>
     <!-- Main News Slider End -->
 
-
  <!-- Breaking News Start -->
     <div class="container-fluid bg-dark py-3 mb-3">
         <div class="container">
@@ -271,12 +394,11 @@
     </div>
     <!-- Breaking News End -->
 
-
     <!-- Featured News Slider Start -->
-    <div class="container-fluid pt-5 mb-3">
+    <div class="container-fluid" style="background: #fff; padding: 35px 0;">
         <div class="container">
-            <div class="section-title">
-                <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
+            <div class="section-title mb-4">
+                <h4 class="m-0 text-uppercase font-weight-bold">Berita Unggulan</h4>
             </div>
             <div class="owl-carousel news-carousel carousel-item-4 position-relative">
                 <div class="position-relative overflow-hidden" style="height: 300px;">
@@ -337,17 +459,16 @@
     </div>
     <!-- Featured News Slider End -->
 
-
     <!-- News With Sidebar Start -->
-    <div class="container-fluid">
+    <div class="container-fluid" style="background: #f8f8f8; padding: 40px 0;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="section-title">
-                                        <h4 class="m-0 text-uppercase font-weight-bold">Latest News</h4>
-                                        <a class="text-secondary font-weight-medium text-decoration-none" href="news.html">View All</a>
+                                    <div class="section-title mb-4">
+                                        <h4 class="m-0 text-uppercase font-weight-bold">Berita Terbaru</h4>
+                                        <a class="text-primary font-weight-medium text-decoration-none" href="news.html">Lihat Semua →</a>
                                     </div>
                                 </div>
                             </div>
@@ -360,22 +481,22 @@
                     <!-- Social Follow Start -->
 <div class="mb-3">
     <div class="section-title mb-0">
-        <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
+        <h4 class="m-0 text-uppercase font-weight-bold">Ikuti Kami</h4>
     </div>
     <div class="bg-white border border-top-0 p-3">
-        <a href="https://facebook.com/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
+        <a href="https://facebook.com/portalnegeri" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
             <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
             <span class="font-weight-medium">85,234 Fans</span>
         </a>
-        <a href="https://twitter.com/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
+        <a href="https://twitter.com/portalnegeri" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
             <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
             <span class="font-weight-medium">67,890 Followers</span>
         </a>
-        <a href="https://linkedin.com/company/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
+        <a href="https://linkedin.com/company/portalnegeri" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
             <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
             <span class="font-weight-medium">34,567 Connects</span>
         </a>
-        <a href="https://instagram.com/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
+        <a href="https://instagram.com/portalnegeri" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
             <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
             <span class="font-weight-medium">123,456 Followers</span>
         </a>
@@ -387,7 +508,7 @@
                     <!-- Popular News Start -->
                     <div class="mb-3">
                         <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Tranding News</h4>
+                            <h4 class="m-0 text-uppercase font-weight-bold">Berita Trending</h4>
                         </div>
                         <div class="bg-white border border-top-0 p-3">
                             <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
@@ -395,8 +516,7 @@
                                 <img
                                 src="img/imgnews-700x435-5.jpg"
                                 alt=""
-                                style="width: 120px; height: 110px; object-fit: cover;"
-                                >
+                                style="width: 120px; height: 110px; object-fit: cover;">
                                 </a>
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
@@ -411,8 +531,7 @@
                                <img
                                 src="img/news-700x435-2.jpg"
                                 alt=""
-                                style="width: 120px; height: 110px; object-fit: cover;"
-                                >
+                                style="width: 120px; height: 110px; object-fit: cover;">
                                 </a>
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
@@ -427,8 +546,7 @@
                                 <img
                                 src="img/news-700x435-3.jpg"
                                 alt=""
-                                style="width: 120px; height: 110px; object-fit: cover;"
-                                >
+                                style="width: 120px; height: 110px; object-fit: cover;">
                                 </a>
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
@@ -443,8 +561,7 @@
                                 <img
                                 src="img/akang.jpg"
                                 alt=""
-                                style="width: 120px; height: 110px; object-fit: cover;"
-                                >
+                                style="width: 120px; height: 110px; object-fit: cover;">
                                 </a>
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
@@ -459,8 +576,7 @@
                                 <img
                                 src="img/berita2.jpg"
                                 alt=""
-                                style="width: 120px; height: 110px; object-fit: cover;"
-                                >
+                                style="width: 120px; height: 110px; object-fit: cover;">
                                 </a>
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
@@ -480,7 +596,7 @@
         <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
     </div>
     <div class="bg-white text-center border border-top-0 p-3">
-        <p>Dapatkan berita terkini langsung di inbox Anda. Berlangganan newsletter Indonesia Daily sekarang!</p>
+        <p>Dapatkan berita terkini langsung di inbox Anda. Berlangganan newsletter Portal Negeri sekarang!</p>
         <form id="newsletterForm" action="#" method="post">
             <div class="input-group mb-2" style="width: 100%;">
                 <input id="newsletterEmail" type="email" class="form-control form-control-lg" placeholder="Email Anda" required>
@@ -497,7 +613,7 @@
                     <!-- Tags Start -->
                     <div class="mb-3">
                         <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
+                            <h4 class="m-0 text-uppercase font-weight-bold">Kategori</h4>
                         </div>
                         <div class="bg-white border border-top-0 p-3">
                             <div class="d-flex flex-wrap m-n1">
@@ -521,22 +637,21 @@
     </div>
     <!-- News With Sidebar End -->
 
-
     <!-- Footer Start -->
 <div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
     <div class="row py-4">
         <div class="col-lg-3 col-md-6 mb-5">
-            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Indonesia Daily</h5>
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Portal Negeri</h5>
             <p class="font-weight-medium text-white"><i class="fa fa-map-marker-alt mr-2"></i>Jl. Merdeka No. 123, Jakarta Pusat, Indonesia 10110</p>
             <p class="font-weight-medium text-white"><i class="fa fa-phone-alt mr-2"></i>+62 21 1234 5678</p>
-            <p class="font-weight-medium text-white"><i class="fa fa-envelope mr-2"></i><a href="https://mail.google.com/mail/?view=cm&fs=1&to=IndonesiaDaily33@gmail.com" target="_blank" class="text-white">IndonesiaDaily33@gmail.com</a></p>
+            <p class="font-weight-medium text-white"><i class="fa fa-envelope mr-2"></i><a href="https://mail.google.com/mail/?view=cm&fs=1&to=portalnegeri@gmail.com" target="_blank" class="text-white">portalnegeri@gmail.com</a></p>
             <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
             <div class="d-flex justify-content-start">
-                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://twitter.com/indonesiadaily" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://facebook.com/indonesiadaily" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://linkedin.com/company/indonesiadaily" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://instagram.com/indonesiadaily" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a class="btn btn-lg btn-secondary btn-lg-square" href="https://youtube.com/@indonesiadaily" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://twitter.com/portalnegeri" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://facebook.com/portalnegeri" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://linkedin.com/company/portalnegeri" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://instagram.com/portalnegeri" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square" href="https://youtube.com/@portalnegeri" target="_blank"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
@@ -582,14 +697,12 @@
     </div>
 </div>
 <div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
-    <p class="m-0 text-center text-white">&copy; 2026 <a href="index.html" class="text-primary">Indonesia Daily</a>. Portal Berita Terpercaya Indonesia. All Rights Reserved.</p>
+    <p class="m-0 text-center text-white">&copy; 2026 <a href="index.html" class="text-primary">Portal Negeri</a>. Portal Berita Terpercaya Indonesia. All Rights Reserved.</p>
 </div>
 <!-- Footer End -->
 
-
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
-
 
    <!-- JavaScript Libraries -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -648,8 +761,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="js/load-featured-news.js"></script>
 <script src="js/load-trending-news.js"></script>
 <script src="js/load-latest-news.js"></script>
-
-
 
 </body>
 </html>

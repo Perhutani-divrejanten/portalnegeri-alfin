@@ -44,7 +44,7 @@
     });
 
 
-    // Tranding carousel (breaking news) – no navigation arrows
+    // Tranding carousel (breaking news) - no navigation arrows
     $(".tranding-carousel").owlCarousel({
         autoplay: true,
         smartSpeed: 2000,
@@ -158,7 +158,8 @@
             if(!container) return;
             const resp = await fetch('/articles.json');
             if(!resp.ok) throw new Error('no index');
-            const data = await resp.json();
+            const raw = await resp.text();
+            const data = JSON.parse(raw.replace(/^\uFEFF/, ''));
             // normalization map
             function normalizeCategory(cat){
                 if(!cat) return 'Ekonomi';
@@ -167,13 +168,14 @@
                     'environment':'Lingkungan','lingkungan':'Lingkungan',
                     'pangan':'Pangan','ketahanan pangan':'Pangan','food':'Pangan','foods':'Pangan','agriculture':'Pangan',
                     'hukum':'Hukum','law':'Hukum','crime':'Hukum',
-                    'keamanan':'Keamanan','security':'Keamanan',
-                    'economy':'Ekonomi','ekonomi':'Ekonomi','business':'Ekonomi',
-                    'education':'Pendidikan','pendidikan':'Pendidikan',
+                    'keamanan':'Keamanan','security':'Keamanan','safety':'Keamanan',
+                    'economy':'Ekonomi','ekonomi':'Ekonomi','business':'Ekonomi','bisnis':'Ekonomi',
+                    'education':'Pendidikan','pendidikan':'Pendidikan','edukasi':'Pendidikan',
                     'sports':'Olahraga','sport':'Olahraga','olahraga':'Olahraga',
-                    'technology':'Teknologi','teknologi':'Teknologi',
+                    'technology':'Teknologi','teknologi':'Teknologi','tech':'Teknologi','digital':'Teknologi','digitalisasi':'Teknologi',
                     'health':'Kesehatan','kesehatan':'Kesehatan',
-                    'culture':'Budaya','budaya':'Budaya'
+                    'culture':'Budaya','budaya':'Budaya',
+                    'sosial':'Sosial','social':'Sosial'
                 };
                 if(map[s]) return map[s];
                 for(const k of Object.keys(map)) if(s.indexOf(k)!==-1) return map[k];

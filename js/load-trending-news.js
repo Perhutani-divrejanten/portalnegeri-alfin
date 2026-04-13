@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch('articles.json')
         .then(response => {
             if (!response.ok) throw new Error('Failed to load articles.json');
-            return response.json();
+            return response.text().then(text => JSON.parse(text.replace(/^\uFEFF/, '')));
         })
         .then(articles => {
             // Clear existing trending items
