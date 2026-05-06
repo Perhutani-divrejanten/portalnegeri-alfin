@@ -27,7 +27,7 @@ jobs:
           security: loose
           local-dir: ./
           server-dir: /portalnegeri/
-          timeout: 300000
+          timeout: 500000
           dangerous-clean-slate: false
           exclude: |
             **/.git*
@@ -73,7 +73,7 @@ jobs:
           security: loose
           local-dir: ./article/
           server-dir: /portalnegeri/article/
-          timeout: 300000
+          timeout: 500000
           dangerous-clean-slate: false
           exclude: |
             **/.git*
