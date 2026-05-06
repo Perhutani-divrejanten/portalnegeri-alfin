@@ -16,38 +16,44 @@ jobs:
       - run: if [ -f package.json ]; then npm ci; fi
       - run: node tools/generate.js
 
-      - name: Install lftp
-        run: sudo apt-get install -y lftp
-
-      - name: Deploy file utama via lftp
-        env:
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          lftp -u "deploy1@bandungbersuara.jabarinfo.id,$FTP_PASSWORD" ftp://195.88.211.226 <<EOF
-          set ftp:passive-mode true
-          set net:reconnect-interval-base 5
-          set net:max-retries 5
-          set net:timeout 60
-          set ftp:ssl-allow false
-          mirror -R --delete --verbose \
-            --exclude-glob .git* \
-            --exclude-glob node_modules/ \
-            --exclude-glob .github/ \
-            --exclude-glob tools/ \
-            --exclude-glob scripts/ \
-            --exclude-glob article/ \
-            --exclude-glob *.ps1 \
-            --exclude-glob *.log \
-            --exclude-glob package.json \
-            --exclude-glob package-lock.json \
-            --exclude-glob netlify.toml \
-            ./ /portalnegeri/
-          bye
-          EOF
+      - name: Deploy file utama (bukan folder article)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: 195.88.211.226
+          username: deploy1@bandungbersuara.jabarinfo.id
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          protocol: ftp
+          security: loose
+          local-dir: ./
+          server-dir: /portalnegeri/
+          timeout: 700000
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.github/**
+            **/tools/**
+            **/scripts/**
+            **/article/**
+            *.bak*
+            *.ps1
+            *.md
+            articles_temp.json
+            .DS_Store
+            .env
+            .env.local
+            *.log
+            netlify.toml
+            package.json
+            package-lock.json
+            LICENSE.txt
+            test.jpg
 
   deploy-articles:
     runs-on: ubuntu-latest
-    needs: deploy-main
+    needs: deploy-main  # jalankan setelah job pertama selesai
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -56,21 +62,18 @@ jobs:
       - run: if [ -f package.json ]; then npm ci; fi
       - run: node tools/generate.js
 
-      - name: Install lftp
-        run: sudo apt-get install -y lftp
-
-      - name: Deploy folder article via lftp
-        env:
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          lftp -u "deploy1@bandungbersuara.jabarinfo.id,$FTP_PASSWORD" ftp://195.88.211.226 <<EOF
-          set ftp:passive-mode true
-          set net:reconnect-interval-base 5
-          set net:max-retries 5
-          set net:timeout 60
-          set ftp:ssl-allow false
-          mirror -R --delete --verbose \
-            ./article/ /portalnegeri/article/
-          bye
-          EOF
-        
+      - name: Deploy folder article saja
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: 195.88.211.226
+          username: deploy1@bandungbersuara.jabarinfo.id
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          protocol: ftp
+          security: loose
+          local-dir: ./article/
+          server-dir: /portalnegeri/article/
+          timeout: 700000
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
